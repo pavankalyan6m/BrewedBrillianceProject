@@ -1,10 +1,9 @@
 package com.brewedbrilliance.cafe.application.service;
 
-import com.brewedbrilliance.cafe.application.Entity.Signup;
+import com.brewedbrilliance.cafe.application.Entity.SignupUser;
 import com.brewedbrilliance.cafe.application.repository.SignupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,12 +14,12 @@ public class SignupService {
     @Autowired
     private SignupRepository signupRepository;
 
-    public ResponseEntity<?> createUser(@RequestBody Signup userRequest){
-        Signup existingUser = signupRepository.findByEmail(userRequest.getEmail());
+    public ResponseEntity<?> createUser(@RequestBody SignupUser userRequest){
+        SignupUser existingUser = signupRepository.findByEmail(userRequest.getEmail());
         if(existingUser!= null){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User already exists");
         }
-        Signup newUser = new Signup();
+        SignupUser newUser = new SignupUser();
         newUser.setEmail(userRequest.getEmail());
         newUser.setFirstName(userRequest.getFirstName());
         newUser.setPassword(userRequest.getPassword());

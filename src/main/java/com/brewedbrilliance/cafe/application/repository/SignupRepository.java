@@ -1,11 +1,11 @@
 package com.brewedbrilliance.cafe.application.repository;
 
-import com.brewedbrilliance.cafe.application.Entity.Signup;
+import com.brewedbrilliance.cafe.application.Entity.SignupUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface SignupRepository extends JpaRepository <Signup, Integer> {
+public interface SignupRepository extends JpaRepository <SignupUser, Integer> {
 
-    Signup findByEmail(String email);
+    SignupUser findByEmail(String email);
 }

@@ -1,6 +1,6 @@
 package com.brewedbrilliance.cafe.application.controller;
 
-import com.brewedbrilliance.cafe.application.Entity.Signup;
+import com.brewedbrilliance.cafe.application.Entity.SignupUser;
 import com.brewedbrilliance.cafe.application.service.SignupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +16,7 @@ public class SignUpController {
     @Autowired
     private SignupService signupService;
     @PostMapping("/signup")
-    public ResponseEntity <?> createUser(@RequestBody Signup userRequest){
+    public ResponseEntity <?> createUser(@RequestBody SignupUser userRequest){
         return signupService.createUser(userRequest);
     }
 }
