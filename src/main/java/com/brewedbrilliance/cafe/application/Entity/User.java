@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "signup")
-public class SignupUser {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     int id;
