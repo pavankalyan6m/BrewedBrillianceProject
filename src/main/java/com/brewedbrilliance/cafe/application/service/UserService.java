@@ -27,7 +27,7 @@ public class UserService {
         newUser.setPassword(userRequest.getPassword());
         newUser.setLastName(userRequest.getLastName());
         userRepository.save(newUser);
-        return ResponseEntity.ok().body("User Created Successsfully...");
+        return ResponseEntity.ok().body("User Created Successfully...");
     }
 
 
