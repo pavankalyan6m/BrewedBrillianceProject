@@ -8,7 +8,8 @@ import jakarta.persistence.*;
 public class CafeItems {
     @JsonProperty("id")
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY
+    )
     int id;
     @JsonProperty("name")
     String name;
@@ -17,14 +18,6 @@ public class CafeItems {
     @JsonProperty("price")
     Float price;
 
-    public String getSize() {
-        return size;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
-    }
-
     @Override
     public String toString() {
         return "CafeItems{" +
@@ -32,8 +25,28 @@ public class CafeItems {
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
+                ", imagePath='" + imagePath + '\'' +
                 ", size='" + size + '\'' +
                 '}';
+    }
+
+    @JsonProperty("imagePath")
+    String imagePath;
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
     }
 
     @JsonProperty("size")

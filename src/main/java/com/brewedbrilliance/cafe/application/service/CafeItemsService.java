@@ -22,12 +22,15 @@ public class CafeItemsService {
         item.setPrice(item.getPrice());
         item.setSize(item.getSize());
 
+        cafeItemsRepository.save(item);
+
         return ResponseEntity.ok().body("New item added successfully to our Menu....");
 
     }
 
     public List<CafeItems> getAllItems()
     {
+        System.out.println("Menu: "+cafeItemsRepository.findAll());
          return cafeItemsRepository.findAll();
     }
 }
