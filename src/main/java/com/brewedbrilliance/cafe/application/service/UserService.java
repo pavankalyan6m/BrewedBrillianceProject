@@ -31,7 +31,17 @@ public class UserService {
     }
 
 
-    public Optional<User> getUser(String email) {
-        return Optional.ofNullable(userRepository.findByEmail(email));
+    public ResponseEntity<String> getUser(String email, String password) {
+        // First, find the user by email
+        System.out.println("Email: "+email);
+        User user = userRepository.findByEmail(email);
+
+        System.out.println("User: "+user);
+        // Check if user exists and if the password matches
+        if (user != null && user.getPassword().equals(password) && user.getEmail().equals(email)) {
+            return ResponseEntity.ok("Logging in...");
+        } else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid Credentials");
+        }
     }
 }

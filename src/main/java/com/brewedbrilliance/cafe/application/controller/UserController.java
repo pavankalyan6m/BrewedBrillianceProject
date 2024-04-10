@@ -19,9 +19,9 @@ public class UserController {
         return userService.createUser(userRequest);
     }
     @GetMapping("/login")
-    public Optional<User> getUserDetails(String email)
+    public ResponseEntity<String> getUserDetails( @RequestParam("email") String email, @RequestParam("password")  String password)
     {
-        return userService.getUser(email);
+        return userService.getUser(email,password);
     }
 }
 
