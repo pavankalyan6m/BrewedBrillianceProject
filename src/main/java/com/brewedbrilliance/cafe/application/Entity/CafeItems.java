@@ -18,6 +18,9 @@ public class CafeItems {
     @JsonProperty("price")
     Float price;
 
+    @JsonProperty("imagePath")
+    String imagePath;
+
     @Override
     public String toString() {
         return "CafeItems{" +
@@ -26,12 +29,9 @@ public class CafeItems {
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 ", imagePath='" + imagePath + '\'' +
-                ", size='" + size + '\'' +
                 '}';
     }
 
-    @JsonProperty("imagePath")
-    String imagePath;
 
     public String getImagePath() {
         return imagePath;
@@ -40,17 +40,6 @@ public class CafeItems {
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
     }
-
-    public String getSize() {
-        return size;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
-    }
-
-    @JsonProperty("size")
-    String size;
 
     public int getId() {
         return id;

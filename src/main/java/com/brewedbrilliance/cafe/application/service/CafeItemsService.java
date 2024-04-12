@@ -20,7 +20,6 @@ public class CafeItemsService {
         items.setName(item.getName());
         items.setDescription(item.getDescription());
         item.setPrice(item.getPrice());
-        item.setSize(item.getSize());
 
         cafeItemsRepository.save(item);
 
