@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CafeItemsService {
@@ -32,4 +33,27 @@ public class CafeItemsService {
         System.out.println("Menu: "+cafeItemsRepository.findAll());
          return cafeItemsRepository.findAll();
     }
+
+    public ResponseEntity<String> updateItems(int itemId, CafeItems newItem) {
+        // Retrieve the existing item from the repository
+        Optional<CafeItems> optionalItem = cafeItemsRepository.findById(itemId);
+
+        // Check if the item exists
+        if (optionalItem.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Item not found");
+        }
+
+        // Update the item's details
+        CafeItems existingItem = optionalItem.get();
+        existingItem.setName(newItem.getName());
+        existingItem.setDescription(newItem.getDescription());
+        existingItem.setPrice(newItem.getPrice());
+
+        // Save the updated item
+        cafeItemsRepository.save(existingItem);
+
+        return ResponseEntity.ok().body("Item updated successfully");
+    }
+
+
 }

@@ -26,4 +26,10 @@ private CafeItemsService cafeItemsService;
     {
         return cafeItemsService.getAllItems();
     }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<String> updateItem(@PathVariable int id, @RequestBody CafeItems newItem){
+        return cafeItemsService.updateItems(id, newItem);
+    }
+
 }
